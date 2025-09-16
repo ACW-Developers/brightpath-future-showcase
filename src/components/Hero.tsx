@@ -1,10 +1,28 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-bg.jpg";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Transforming Ideas into Digital Success";
+  
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullText.length) {
+        setTypedText(fullText.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+    
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
+    <section className="relative min-h-screen flex items-center hero-bg overflow-hidden">
       {/* Particles Background */}
       <div className="particles">
         {[...Array(50)].map((_, i) => (
@@ -32,33 +50,34 @@ const Hero = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="animate-fade-in-up">
-          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/20">
-            <Sparkles className="w-4 h-4 text-primary" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="animate-fade-in-up max-w-4xl">
+          <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/20 animate-glow-pulse">
+            <Sparkles className="w-4 h-4 text-primary animate-pulse" />
             <span className="text-sm font-medium">Welcome to the Future</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-space mb-6">
-            <span className="gradient-text">BrightPath</span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-space mb-6 animate-slide-in-left">
+            <span className="gradient-text animate-gradient-shift">BrightPath</span>
             <br />
-            <span className="text-foreground">Technologies</span>
+            <span className="text-foreground animate-fade-in-delayed">Technologies</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-inter">
-            Transforming Ideas into Digital Success
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-inter typing-animation">
+            {typedText}
+            <span className="animate-blink">|</span>
           </p>
           
-          <p className="text-lg text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg text-muted-foreground mb-12 max-w-4xl leading-relaxed animate-fade-in-delayed-2">
             Empowering businesses with innovative, reliable, and tailor-made digital solutions that enhance growth, streamline processes, and amplify brand presence in a rapidly evolving digital world.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" variant="glass" className="group text-lg px-8 py-6">
+          <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-in-up">
+            <Button size="lg" variant="glass" className="group text-lg px-8 py-6 animate-bounce-subtle hover:animate-glow-pulse">
               Get Started
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary/50 hover:border-primary">
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary/50 hover:border-primary hover:shadow-glow transition-all duration-300">
               View Our Work
             </Button>
           </div>
