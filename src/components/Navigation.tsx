@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo/logo1.png"; // <-- import your logo here
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,6 @@ const Navigation = () => {
     setIsOpen(false);
     const el = document.getElementById(id);
     if (!el) return;
-    // Wait one frame so the menu can close and layout can settle
     requestAnimationFrame(() => {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     });
@@ -27,12 +27,15 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+          {/* Logo + Name */}
+          <div className="flex items-center space-x-1 flex-shrink-0">
+            <img src={logo} alt="BrightPath Logo" className="h-8 w-8 object-contain" />
             <h1 className="text-xl font-bold font-space gradient-text">
               BrightPath
             </h1>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
@@ -47,14 +50,21 @@ const Navigation = () => {
             </div>
           </div>
 
+          {/* Contact Button (Desktop) */}
           <div className="hidden md:block">
-            <a href="#contact" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
-              <Button variant="glass">
-                Contact Us
-              </Button>
+            <a
+              href="#contact"
+              onClick={() =>
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+            >
+              <Button variant="glass">Contact Us</Button>
             </a>
           </div>
 
+          {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -67,6 +77,7 @@ const Navigation = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden border-t border-white/10">
             <div className="px-2 pt-2 pb-3 space-y-1">
@@ -75,11 +86,7 @@ const Navigation = () => {
                   key={item.name}
                   href={item.href}
                   className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-colors"
-                  onClick={() => {
-                    setIsOpen(false);
-                    // let anchor handle immediate jump if you want, or use scrollToId for smooth
-                    // document.getElementById(item.href.replace('#', ''))?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </a>

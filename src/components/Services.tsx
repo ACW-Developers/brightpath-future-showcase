@@ -10,8 +10,8 @@ import {
 } from "lucide-react";
 
 // Import service images
-import webDesignImage from "@/assets/services/web-design.jpg";
-import softwareDevImage from "@/assets/services/software-dev.jpg";
+import webDesignImage from "@/assets/services/jikubali.png";
+import softwareDevImage from "@/assets/services/mite.png";
 import brandingImage from "@/assets/services/branding.jpg";
 import socialMediaImage from "@/assets/services/social-media.jpg";
 import digitalMarketingImage from "@/assets/services/digital-marketing.jpg";

@@ -96,11 +96,11 @@ const Testimonials = () => {
         <div className="text-center mt-16">
           <div className="inline-flex items-center space-x-8 glass-card px-8 py-4">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">15+</div>
-              <div className="text-sm text-muted-foreground">African Clients</div>
+              <div className="text-3xl font-bold text-primary">5+</div>
+              <div className="text-sm text-muted-foreground">Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-secondary">24+</div>
+              <div className="text-3xl font-bold text-secondary">10+</div>
               <div className="text-sm text-muted-foreground">Projects Completed</div>
             </div>
             <div className="text-center">

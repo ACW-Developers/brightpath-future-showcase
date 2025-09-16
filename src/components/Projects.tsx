@@ -9,7 +9,8 @@ import healthcareSystemImage from "@/assets/projects/mite.png";
 const projects = [
   {
     title: "Attendance Management System",
-    description: "A smart attendance management platform designed to streamline tracking of employee and student attendance. It offers real-time monitoring, automated reporting, and a user-friendly dashboard to enhance accountability and productivity.",
+    description:
+      "A smart attendance management platform designed to streamline tracking of employee and student attendance.",
     image: inventorySystemImage,
     tech: ["Vue.js", "Django", "PostgreSQL", "Hospinnacle"],
     category: "Enterprise Software",
@@ -21,12 +22,14 @@ const projects = [
       "Automated reporting and analytics",
       "User-friendly dashboard",
       "Multi-role access control (Admin, Staff, Students)",
-      "Cloud-based data storage and backup"
-    ]
-},
+      "Cloud-based data storage and backup",
+    ],
+    link: "https://mycityradiusattendance.com/",
+  },
   {
     title: "Jikubali Africa Website",
-    description: "A dynamic and engaging website built for Jikubali Africa, a mental health and wellness organization. The platform raises awareness, shares resources, and provides information on programs, events, and initiatives that promote mental well-being across Africa.",
+    description:
+      "A dynamic and engaging website built for Jikubali Africa to raise awareness on mental health issues.",
     image: crmPlatformImage,
     tech: ["React", "Django", "Postgres"],
     category: "Non-Profit Website",
@@ -38,12 +41,14 @@ const projects = [
       "Events and programs section",
       "Blog and resource hub",
       "Contact and support channels",
-      "Responsive and user-friendly design"
-    ]
-},
+      "Responsive and user-friendly design",
+    ],
+    link: "https://jikubaliafrica.org/",
+  },
   {
     title: "Mite Explorers Tours and Travel Website",
-    description: "An interactive tours and travel booking platform designed for seamless trip planning. The website allows users to explore destinations, book travel packages, and access travel guides, all within a responsive and user-friendly interface.",
+    description:
+      "An interactive tours and travel booking platform designed for seamless trip planning and bookings.",
     image: healthcareSystemImage,
     tech: ["Vue.js", "Django", "PostgreSQL"],
     category: "Travel & Tourism",
@@ -55,10 +60,10 @@ const projects = [
       "Destination exploration and details",
       "Travel guides and itineraries",
       "Secure payment integration",
-      "Responsive design for mobile and desktop"
-    ]
-}
-
+      "Responsive design for mobile and desktop",
+    ],
+    link: "https://miteexplorers.com",
+  },
 ];
 
 const Projects = () => {
@@ -135,10 +140,21 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <Button variant="outline" size="sm" className="w-full group">
-                  View Case Study
-                  <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full group"
+                    >
+                      View Live Demo
+                      <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </a>
               </div>
             </div>
           ))}
