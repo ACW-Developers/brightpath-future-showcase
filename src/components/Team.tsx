@@ -1,17 +1,17 @@
 import { Linkedin, Github, Twitter } from "lucide-react";
 
 // Import team images
-import ceoImage from "@/assets/team/ceo.jpg";
-import creativeDirectorImage from "@/assets/team/creative-director.jpg";
-import leadDeveloperImage from "@/assets/team/lead-developer.jpg";
-import marketingSpecialistImage from "@/assets/team/marketing-specialist.jpg";
+import ceoImage from "@/assets/team/David.png";
+import creativeDirectorImage from "@/assets/team/peris2.png";
+import leadDeveloperImage from "@/assets/team/Clinton1.jpg";
+import marketingSpecialistImage from "@/assets/team/v21.png";
 
 const teamMembers = [
   {
-    name: "Alex Thompson",
+    name: "David Irihose",
     role: "CEO & Founder",
     image: ceoImage,
-    description: "Visionary leader with 15+ years in tech innovation and digital transformation.",
+    description: "Visionary leader with 2+ years in tech innovation and digital transformation.",
     socials: {
       linkedin: "#",
       twitter: "#",
@@ -19,7 +19,7 @@ const teamMembers = [
     }
   },
   {
-    name: "Sarah Martinez",
+    name: "Peris Mwangi",
     role: "Creative Director",
     image: creativeDirectorImage,
     description: "Award-winning designer specializing in brand identity and user experience.",
@@ -30,7 +30,7 @@ const teamMembers = [
     }
   },
   {
-    name: "Michael Chen",
+    name: "Amos Clinton",
     role: "Lead Developer",
     image: leadDeveloperImage,
     description: "Full-stack architect with expertise in cutting-edge web technologies.",
@@ -41,7 +41,7 @@ const teamMembers = [
     }
   },
   {
-    name: "Emily Johnson",
+    name: "Lilian Favour",
     role: "Marketing Specialist",
     image: marketingSpecialistImage,
     description: "Digital marketing expert driving growth through data-driven strategies.",

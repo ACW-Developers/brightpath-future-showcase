@@ -2,59 +2,63 @@ import { ExternalLink, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Import project images
-import inventorySystemImage from "@/assets/projects/inventory-system.jpg";
-import crmPlatformImage from "@/assets/projects/crm-platform.jpg";
-import healthcareSystemImage from "@/assets/projects/healthcare-system.jpg";
+import inventorySystemImage from "@/assets/projects/city.png";
+import crmPlatformImage from "@/assets/projects/jikubali.png";
+import healthcareSystemImage from "@/assets/projects/mite.png";
 
 const projects = [
   {
-    title: "SmartInventory Pro",
-    description: "Advanced inventory management system with real-time tracking, automated reordering, and comprehensive analytics dashboard for enterprise-level businesses.",
+    title: "Attendance Management System",
+    description: "A smart attendance management platform designed to streamline tracking of employee and student attendance. It offers real-time monitoring, automated reporting, and a user-friendly dashboard to enhance accountability and productivity.",
     image: inventorySystemImage,
-    tech: ["React", "Node.js", "PostgreSQL", "AWS"],
+    tech: ["Vue.js", "Django", "PostgreSQL", "Hospinnacle"],
     category: "Enterprise Software",
     year: "2024",
-    teamSize: "6 developers",
-    duration: "8 months",
+    teamSize: "2 developers",
+    duration: "1 month",
     features: [
-      "Real-time inventory tracking",
-      "Automated reorder notifications",
-      "Advanced analytics dashboard",
-      "Multi-location support"
+      "Real-time attendance tracking",
+      "Automated reporting and analytics",
+      "User-friendly dashboard",
+      "Multi-role access control (Admin, Staff, Students)",
+      "Cloud-based data storage and backup"
     ]
-  },
+},
   {
-    title: "CRM Connect",
-    description: "Customer relationship management platform with integrated sales pipeline, contact management, and automated marketing campaigns for growing businesses.",
+    title: "Jikubali Africa Website",
+    description: "A dynamic and engaging website built for Jikubali Africa, a mental health and wellness organization. The platform raises awareness, shares resources, and provides information on programs, events, and initiatives that promote mental well-being across Africa.",
     image: crmPlatformImage,
-    tech: ["Vue.js", "Python", "MongoDB", "Redis"],
-    category: "Business Platform",
+    tech: ["React", "Django", "Postgres"],
+    category: "Non-Profit Website",
     year: "2024",
-    teamSize: "8 developers",
-    duration: "10 months",
+    teamSize: "1 developer",
+    duration: "3 weeks",
     features: [
-      "Contact management system",
-      "Sales pipeline automation",
-      "Email marketing integration",
-      "Custom reporting tools"
+      "Informative pages on mental health awareness",
+      "Events and programs section",
+      "Blog and resource hub",
+      "Contact and support channels",
+      "Responsive and user-friendly design"
     ]
-  },
+},
   {
-    title: "HealthHub Management",
-    description: "Comprehensive healthcare management system with patient records, appointment scheduling, and telemedicine capabilities for modern medical practices.",
+    title: "Mite Explorers Tours and Travel Website",
+    description: "An interactive tours and travel booking platform designed for seamless trip planning. The website allows users to explore destinations, book travel packages, and access travel guides, all within a responsive and user-friendly interface.",
     image: healthcareSystemImage,
-    tech: ["Angular", "C#", "SQL Server", "Azure"],
-    category: "Healthcare Technology",
+    tech: ["Vue.js", "Django", "PostgreSQL"],
+    category: "Travel & Tourism",
     year: "2023",
-    teamSize: "10 developers",
-    duration: "12 months",
+    teamSize: "2 developers",
+    duration: "2 months",
     features: [
-      "Electronic health records",
-      "Appointment scheduling",
-      "Telemedicine integration",
-      "HIPAA compliant security"
+      "Online booking system for tours and packages",
+      "Destination exploration and details",
+      "Travel guides and itineraries",
+      "Secure payment integration",
+      "Responsive design for mobile and desktop"
     ]
-  }
+}
+
 ];
 
 const Projects = () => {
