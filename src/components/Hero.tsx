@@ -91,9 +91,14 @@ const Hero = () => {
               <span className="animate-blink">|</span>
             </p>
 
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl leading-relaxed animate-fade-in-delayed-2">
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl leading-relaxed animate-fade-in-delayed-2 hidden md:block">
               Empowering businesses with innovative, reliable, and tailor-made digital solutions that enhance growth, streamline processes, and amplify brand presence in a rapidly evolving digital world.
             </p>
+
+            <p className="text-base text-muted-foreground mb-6 leading-relaxed animate-fade-in-delayed-2 block md:hidden">
+              Empowering businesses with innovative and reliable digital solutions for growth and visibility.
+            </p>
+
 
             <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-in-up">
             {/* Get Started → scroll to #services */}
