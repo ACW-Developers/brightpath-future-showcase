@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { 
   Globe, 
   Code, 
@@ -11,10 +12,16 @@ import {
   Badge,
   FileText,
   File,
-  Printer
+  Printer,
+  Rocket,
+  Sparkles
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import OrderServiceModal from "./OrderServiceModal";
 
 const Services = () => {
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<string>("");
   // Updated online image URLs for printing services with active links
   const printingServiceImages = {
     main: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80",
@@ -126,6 +133,11 @@ const Services = () => {
   const printingService = services[0];
   const otherServices = services.slice(1);
 
+  const handleOrderService = (serviceName: string) => {
+    setSelectedService(serviceName);
+    setIsOrderModalOpen(true);
+  };
+
   return (
     <section className="py-24 px-6 relative">
       <div className="max-w-7xl mx-auto">
@@ -161,6 +173,23 @@ const Services = () => {
                 <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
                   {printingService.description}
                 </p>
+                
+                <div className="flex gap-4 mb-6">
+                  <Button
+                    onClick={() => handleOrderService(printingService.title)}
+                    className="futuristic-btn flex items-center gap-2 px-6 py-3"
+                  >
+                    <Rocket className="w-5 h-5" />
+                    Order Now
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="flex items-center gap-2 px-6 py-3 border-primary/30 hover:border-primary/60 hover:bg-primary/10"
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    Get Quote
+                  </Button>
+                </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
                   {printingService.subServices.map((subService, subIndex) => {
@@ -231,9 +260,27 @@ const Services = () => {
                     <h3 className="text-lg font-semibold font-space mb-3 text-foreground">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                       {service.description}
                     </p>
+                    
+                    <div className="flex gap-2 mt-auto">
+                      <Button
+                        size="sm"
+                        onClick={() => handleOrderService(service.title)}
+                        className="futuristic-btn flex items-center gap-1 flex-1"
+                      >
+                        <Rocket className="w-4 h-4" />
+                        Order
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-primary/30 hover:border-primary/60 hover:bg-primary/10"
+                      >
+                        <Sparkles className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -241,6 +288,12 @@ const Services = () => {
           })}
         </div>
       </div>
+      
+      <OrderServiceModal
+        isOpen={isOrderModalOpen}
+        onClose={() => setIsOrderModalOpen(false)}
+        selectedService={selectedService}
+      />
     </section>
   );
 };
