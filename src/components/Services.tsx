@@ -19,19 +19,31 @@ import {
 import { Button } from "@/components/ui/button";
 import OrderServiceModal from "./OrderServiceModal";
 
+// Import local images
+import mainImg from "@/assets/printing/printing.jpeg";
+import tshirtImg from "@/assets/printing/tshirt.jpeg";
+import capImg from "@/assets/printing/cap.jpeg";
+import businessCardsImg from "@/assets/printing/buss.jpeg";
+import documentsImg from "@/assets/printing/doc.jpg";
+import bannersImg from "@/assets/printing/banners.jpeg";
+import promotionalImg from "@/assets/printing/mug.jpeg";
+import digitalMarketingImg from '@/assets/services/digital-marketing.jpg';
+import ecommerceImg from '@/assets/services/ecommerce.jpg';
+import logoDesignImg from '@/assets/services/branding.jpg';
+
 const Services = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string>("");
-  // Updated online image URLs for printing services with active links
+  
+  // Updated to use local images for printing services
   const printingServiceImages = {
-    main: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80",
-    tshirt: "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1827&q=80",
-    cap: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80",
-    businessCards: "https://images.unsplash.com/photo-1539096566367-0718daf1f9c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80",
-    documents: "https://images.unsplash.com/photo-1586074299757-dc655f18518c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80",
-    banners: "https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1752&q=80",
-    promotional: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1515&q=80",
-    largeFormat: "https://images.unsplash.com/photo-1616007736933-54d2525a2c19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+    main: mainImg,
+    tshirt: tshirtImg,
+    cap: capImg,
+    businessCards: businessCardsImg,
+    documents: documentsImg,
+    banners: bannersImg,
+    promotional: promotionalImg,
   };
 
   const services = [
@@ -83,49 +95,49 @@ const Services = () => {
       icon: Globe,
       title: "Website Design & Development",
       description: "Custom websites that combine stunning design with powerful functionality to create exceptional user experiences.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1715&q=80"
     },
     {
       icon: Code,
       title: "Custom Software Development",
       description: "Tailored software solutions built to meet your specific business requirements and streamline operations.",
-      image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1770&q=80"
     },
     {
       icon: Palette,
       title: "Logo & Business Card Design",
       description: "Professional brand identity design that makes your business memorable and stands out from the competition.",
-      image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80"
+      image: logoDesignImg
     },
     {
       icon: Share2,
       title: "Social Media Management",
       description: "Comprehensive social media strategies to build your online presence and engage with your target audience.",
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80"
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1674&q=80"
     },
     {
       icon: TrendingUp,
       title: "Digital Marketing & SEO",
       description: "Data-driven marketing campaigns and SEO optimization to increase visibility and drive qualified traffic.",
-      image: "https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1774&q=80"
+      image: digitalMarketingImg
     },
     {
       icon: Headphones,
       title: "IT Consulting & Support",
       description: "Expert technology consulting and reliable support services to keep your business running smoothly.",
-      image: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80"
+      image: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1780&q=80"
     },
     {
       icon: Smartphone,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications that deliver seamless experiences across all devices.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1770&q=80"
     },
     {
       icon: ShoppingCart,
       title: "E-commerce Solutions",
       description: "Complete e-commerce platforms with secure payment processing and inventory management systems.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+      image: ecommerceImg
     }
   ];
 
