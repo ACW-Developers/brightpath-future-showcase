@@ -15,7 +15,6 @@ import {
   Printer,
   Rocket,
   Sparkles,
-  DollarSign,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OrderServiceModal from "./OrderServiceModal";
@@ -61,9 +60,6 @@ const Services: React.FC = () => {
           description:
             "Custom t-shirt printing with high-quality materials and vibrant designs for events, promotions, or personal use.",
           image: printingServiceImages.tshirt,
-          rate: "$20 per piece",
-          bulkRate: "$15 (bulk orders)",
-          details: "Bulk discounts available",
         },
         {
           icon: Badge,
@@ -71,9 +67,6 @@ const Services: React.FC = () => {
           description:
             "Customized caps and headwear with professional embroidery or printing for branding and merchandise.",
           image: printingServiceImages.cap,
-          rate: "$15 per piece",
-          bulkRate: "$12 (bulk orders)",
-          details: "Perfect for events and promotions",
         },
         {
           icon: FileText,
@@ -81,8 +74,6 @@ const Services: React.FC = () => {
           description:
             "Elegant business cards, letterheads, and stationery that make a lasting impression on your clients.",
           image: printingServiceImages.businessCards,
-          rate: "$30",
-          details: "Startup pack (250 cards)",
         },
         {
           icon: File,
@@ -90,8 +81,6 @@ const Services: React.FC = () => {
           description:
             "Professional document printing, reports, presentations with various binding options for a polished look.",
           image: printingServiceImages.documents,
-          rate: "$0.15 - $0.40 per page",
-          details: "$0.15 (B/W) • $0.40 (Color) • $5-10 Binding",
         },
         {
           icon: TrendingUp,
@@ -99,8 +88,6 @@ const Services: React.FC = () => {
           description:
             "Eye-catching banners, signs, and displays for events, retail spaces, and promotional campaigns.",
           image: printingServiceImages.banners,
-          rate: "$4 - $8 per sq. ft.",
-          details: "$4 (vinyl) • $8 (premium)",
         },
         {
           icon: ShoppingCart,
@@ -108,8 +95,6 @@ const Services: React.FC = () => {
           description:
             "Custom printed promotional items including mugs, pens, bags, and more to boost your brand visibility.",
           image: printingServiceImages.promotional,
-          rate: "$3 - $20 per item",
-          details: "Varies by product type",
         },
       ],
     },
@@ -121,8 +106,6 @@ const Services: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1715&q=80",
       category: "Digital Solutions",
-      rate: "$250 - $300",
-      details: "Mobile-friendly websites tailored for startups",
     },
     {
       icon: Code,
@@ -132,8 +115,6 @@ const Services: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1770&q=80",
       category: "Digital Solutions",
-      rate: "From $300",
-      details: "Startup-level builds",
     },
     {
       icon: Palette,
@@ -142,8 +123,6 @@ const Services: React.FC = () => {
         "Professional brand identity design that makes your business memorable and stands out from the competition.",
       image: logoDesignImg,
       category: "Digital Solutions",
-      rate: "$30 - $50",
-      details: "Unique logo & matching business card design",
     },
     {
       icon: Share2,
@@ -153,9 +132,6 @@ const Services: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1674&q=80",
       category: "Digital Solutions",
-      rate: "$100 - $150",
-      period: "per month",
-      details: "Monthly content creation & account management",
     },
     {
       icon: TrendingUp,
@@ -164,9 +140,6 @@ const Services: React.FC = () => {
         "Data-driven marketing campaigns and SEO optimization to increase visibility and drive qualified traffic.",
       image: digitalMarketingImg,
       category: "Digital Solutions",
-      rate: "$100 - $200",
-      period: "per month",
-      details: "SEO optimization & ad campaigns",
     },
     {
       icon: Headphones,
@@ -176,9 +149,6 @@ const Services: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?auto=format&fit=crop&w=1780&q=80",
       category: "Digital Solutions",
-      rate: "$20 - $30",
-      period: "per hour",
-      details: "Expert advice & reliable support",
     },
     {
       icon: Smartphone,
@@ -188,8 +158,6 @@ const Services: React.FC = () => {
       image:
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1770&q=80",
       category: "Digital Solutions",
-      rate: "From $350",
-      details: "Startup-ready Android/iOS apps",
     },
     {
       icon: ShoppingCart,
@@ -198,8 +166,6 @@ const Services: React.FC = () => {
         "Complete e-commerce platforms with secure payment processing and inventory management systems.",
       image: ecommerceImg,
       category: "Digital Solutions",
-      rate: "From $300",
-      details: "Secure online shops with payment systems",
     },
   ];
 
@@ -210,38 +176,6 @@ const Services: React.FC = () => {
     setSelectedService(serviceName);
     setIsOrderModalOpen(true);
   };
-
-  const PriceTag: React.FC<{
-    rate: string;
-    period?: string;
-    bulkRate?: string;
-    details?: string;
-    className?: string;
-  }> = ({ rate, period, bulkRate, details, className = "" }) => (
-    <div
-      className={`bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-3 ${className}`}
-    >
-      <div className="flex items-center justify-between mb-1">
-        <div className="flex items-center gap-2">
-          <DollarSign className="w-4 h-4 text-primary" />
-          <span className="font-bold text-lg text-foreground">{rate}</span>
-        </div>
-        {period && (
-          <span className="text-sm text-muted-foreground">{period}</span>
-        )}
-      </div>
-      {bulkRate && (
-        <div className="text-sm text-green-600 font-medium mb-1">
-          {bulkRate}
-        </div>
-      )}
-      {details && (
-        <div className="text-xs text-muted-foreground leading-tight">
-          {details}
-        </div>
-      )}
-    </div>
-  );
 
   return (
     <section className="py-24 px-6 relative">
@@ -288,20 +222,13 @@ const Services: React.FC = () => {
                   {printingService.description}
                 </p>
 
-                <div className="flex gap-4 mb-6">
+                <div className="mb-6">
                   <Button
                     onClick={() => handleOrderService(printingService.title)}
                     className="futuristic-btn flex items-center gap-2 px-6 py-3"
                   >
                     <Rocket className="w-5 h-5" />
                     Order Now
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="flex items-center gap-2 px-6 py-3 border-primary/30 hover:border-primary/60 hover:bg-primary/10"
-                  >
-                    <Sparkles className="w-5 h-5" />
-                    Get Quote
                   </Button>
                 </div>
 
@@ -329,15 +256,9 @@ const Services: React.FC = () => {
                         <h4 className="font-semibold font-space mb-2 text-foreground">
                           {subService.title}
                         </h4>
-                        <p className="text-muted-foreground text-xs mb-3 leading-relaxed">
+                        <p className="text-muted-foreground text-xs leading-relaxed">
                           {subService.description}
                         </p>
-
-                        <PriceTag
-                          rate={subService.rate}
-                          bulkRate={subService.bulkRate}
-                          details={subService.details}
-                        />
                       </div>
                     );
                   })}
@@ -395,29 +316,14 @@ const Services: React.FC = () => {
                       {service.description}
                     </p>
 
-                    <div className="space-y-3 mb-4">
-                      <PriceTag
-                        rate={service.rate}
-                        period={service.period}
-                        details={service.details}
-                      />
-                    </div>
-
-                    <div className="flex gap-2 mt-auto">
+                    <div className="mt-auto">
                       <Button
                         size="sm"
                         onClick={() => handleOrderService(service.title)}
-                        className="futuristic-btn flex items-center gap-1 flex-1"
+                        className="futuristic-btn flex items-center gap-1 w-full"
                       >
                         <Rocket className="w-4 h-4" />
                         Order Now
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-primary/30 hover:border-primary/60 hover:bg-primary/10"
-                      >
-                        <Sparkles className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
