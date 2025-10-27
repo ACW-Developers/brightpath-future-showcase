@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo/logo1.png"; // <-- import your logo here
+import logo from "@/assets/logo/logo.png"; // <-- import your logo here
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
