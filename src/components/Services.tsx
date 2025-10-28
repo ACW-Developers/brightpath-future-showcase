@@ -36,6 +36,12 @@ import promotionalImg from "@/assets/printing/mug.jpeg";
 import digitalMarketingImg from "@/assets/services/digital-marketing.jpg";
 import ecommerceImg from "@/assets/services/ecommerce.jpg";
 import logoDesignImg from "@/assets/services/branding.jpg";
+import carBranding from "@/assets/printing/car.png";
+import officeBranding from "@/assets/printing/office.jpeg";
+import wheelCover from "@/assets/printing/wheel.webp";
+import stickers from "@/assets/printing/stickers.jpeg";
+import magazines from "@/assets/printing/magazine.jpeg";
+import books from "@/assets/printing/book.jpeg";
 
 const Services: React.FC = () => {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
@@ -49,6 +55,12 @@ const Services: React.FC = () => {
     documents: documentsImg,
     banners: bannersImg,
     promotional: promotionalImg,
+    carBranding: carBranding,
+    officeBranding: officeBranding,
+    wheelCover: wheelCover,
+    stickers: stickers,
+    magazines: magazines,
+    books: books,
   };
 
   const services = [
@@ -107,42 +119,42 @@ const Services: React.FC = () => {
           title: "Car Branding",
           description:
             "Professional vehicle wraps and branding solutions to transform your fleet into mobile advertisements.",
-          image: printingServiceImages.banners,
+          image: printingServiceImages.carBranding,
         },
         {
           icon: Building2,
           title: "Office Branding",
           description:
             "Complete office branding solutions including wall graphics, signage, and interior decor to reflect your brand identity.",
-          image: printingServiceImages.banners,
+          image: printingServiceImages.officeBranding,
         },
         {
           icon: Disc,
           title: "Wheel Cover",
           description:
             "Custom designed wheel covers for promotional campaigns and branded vehicles with durable materials.",
-          image: printingServiceImages.promotional,
+          image: printingServiceImages.wheelCover,
         },
         {
           icon: StickyNote,
           title: "Stickers",
           description:
             "High-quality custom stickers in various shapes, sizes, and finishes for branding, packaging, and promotional use.",
-          image: printingServiceImages.promotional,
+          image: printingServiceImages.stickers,
         },
         {
           icon: BookOpen,
           title: "Magazines",
           description:
             "Professional magazine printing with premium paper quality and binding options for publications and portfolios.",
-          image: printingServiceImages.documents,
+          image: printingServiceImages.magazines,
         },
         {
           icon: Book,
           title: "Books",
           description:
             "Complete book printing services from softcover to hardcover with various binding styles for authors and publishers.",
-          image: printingServiceImages.documents,
+          image: printingServiceImages.books,
         },
       ],
     },
