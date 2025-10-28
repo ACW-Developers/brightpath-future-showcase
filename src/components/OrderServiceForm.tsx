@@ -80,7 +80,13 @@ const OrderServiceForm: React.FC<OrderServiceFormProps> = ({ selectedService, on
     "Business Cards & Stationery",
     "Document Printing & Binding",
     "Banners & Signage",
-    "Promotional Products"
+    "Promotional Products",
+    "Car Branding",
+    "Office Branding",
+    "Wheel Cover",
+    "Stickers",
+    "Magazines",
+    "Books"
   ];
 
   const budgetRanges = [

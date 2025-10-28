@@ -15,6 +15,12 @@ import {
   Printer,
   Rocket,
   Sparkles,
+  Car,
+  Building2,
+  Disc,
+  StickyNote,
+  BookOpen,
+  Book,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import OrderServiceModal from "./OrderServiceModal";
@@ -95,6 +101,48 @@ const Services: React.FC = () => {
           description:
             "Custom printed promotional items including mugs, pens, bags, and more to boost your brand visibility.",
           image: printingServiceImages.promotional,
+        },
+        {
+          icon: Car,
+          title: "Car Branding",
+          description:
+            "Professional vehicle wraps and branding solutions to transform your fleet into mobile advertisements.",
+          image: printingServiceImages.banners,
+        },
+        {
+          icon: Building2,
+          title: "Office Branding",
+          description:
+            "Complete office branding solutions including wall graphics, signage, and interior decor to reflect your brand identity.",
+          image: printingServiceImages.banners,
+        },
+        {
+          icon: Disc,
+          title: "Wheel Cover",
+          description:
+            "Custom designed wheel covers for promotional campaigns and branded vehicles with durable materials.",
+          image: printingServiceImages.promotional,
+        },
+        {
+          icon: StickyNote,
+          title: "Stickers",
+          description:
+            "High-quality custom stickers in various shapes, sizes, and finishes for branding, packaging, and promotional use.",
+          image: printingServiceImages.promotional,
+        },
+        {
+          icon: BookOpen,
+          title: "Magazines",
+          description:
+            "Professional magazine printing with premium paper quality and binding options for publications and portfolios.",
+          image: printingServiceImages.documents,
+        },
+        {
+          icon: Book,
+          title: "Books",
+          description:
+            "Complete book printing services from softcover to hardcover with various binding styles for authors and publishers.",
+          image: printingServiceImages.documents,
         },
       ],
     },
