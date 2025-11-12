@@ -78,149 +78,151 @@ const Hero = () => {
               Empowering businesses with innovative and reliable digital solutions for growth and visibility.
             </p>
 
-
             <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-in-up">
-            {/* Get Started → scroll to #services */}
-            <Button
-              size="lg"
-              variant="glass"
-              className="group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
-              onClick={() =>
-                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Get Started
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
-            </Button>
+              <Button
+                size="lg"
+                variant="glass"
+                className="group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
+                onClick={() =>
+                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Get Started
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
+              </Button>
 
-            {/* View Our Work → scroll to #projects */}
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-6 py-3 border-primary/50 hover:border-primary hover:shadow-glow transition-all duration-300"
-              onClick={() =>
-                document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              View Our Work
-            </Button>
-          </div>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-lg px-6 py-3 border-primary/50 hover:border-primary hover:shadow-glow transition-all duration-300"
+                onClick={() =>
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                View Our Work
+              </Button>
+            </div>
           </div>
           
-          {/* Animated Tech SVG Section */}
+          {/* Elegant Image Stack Section */}
           <div className="relative w-full lg:w-1/2 flex justify-center items-center animate-fade-in">
-            <svg
-              className="w-full h-auto max-w-lg"
-              viewBox="0 0 500 500"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Central Shield */}
-              <g className="animate-pulse-glow">
-                <circle
-                  cx="250"
-                  cy="250"
-                  r="120"
-                  fill="none"
-                  stroke="url(#gradient1)"
-                  strokeWidth="2"
-                  className="animate-spin-slow"
-                  style={{ transformOrigin: 'center' }}
-                />
-                <circle
-                  cx="250"
-                  cy="250"
-                  r="100"
-                  fill="none"
-                  stroke="url(#gradient2)"
-                  strokeWidth="1.5"
-                  className="animate-spin-slow"
-                  style={{ transformOrigin: 'center', animationDirection: 'reverse' }}
-                />
+            <div className="relative w-80 h-80">
+              {/* Background Glow Effects */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-64 h-64 rounded-full bg-primary/20 blur-2xl animate-pulse-glow" />
+                <div className="absolute w-72 h-72 rounded-full bg-accent/15 blur-xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+              </div>
+
+              {/* Image Stack */}
+              <div className="relative w-full h-full flex items-center justify-center">
                 
-                {/* Shield Icon */}
-                <path
-                  d="M 250 200 L 220 220 L 220 270 Q 220 290 250 300 Q 280 290 280 270 L 280 220 Z"
-                  fill="url(#gradient3)"
-                  className="animate-float"
-                />
-                
-                {/* Checkmark */}
-                <path
-                  d="M 235 255 L 245 265 L 265 240"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  fill="none"
-                  className="animate-fade-in-delayed"
-                />
-              </g>
+                {/* Printing & Branding Image */}
+                <div className="absolute z-30 -left-4 top-1/2 transform -translate-y-1/2 animate-float-delayed-1">
+                  <div className="relative group">
+                    <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-primary/20 transition-all duration-500 group-hover:scale-105 group-hover:border-primary/40 group-hover:shadow-primary/30">
+                      <img 
+                        src="https://images.unsplash.com/photo-1601935111741-ae98b2b230b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Printing and Branding"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    
+                    {/* Tag */}
+                    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-40">
+                      <div className="bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-2 group-hover:scale-110 transition-transform duration-300">
+                        <Zap className="w-3 h-3" />
+                        Printing & Branding
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {/* Orbiting Data Nodes */}
-              <g className="animate-orbit-1" style={{ transformOrigin: '250px 250px' }}>
-                <circle cx="250" cy="130" r="8" fill="hsl(var(--primary))" className="animate-pulse" />
-                <circle cx="370" cy="250" r="8" fill="hsl(var(--accent))" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
-                <circle cx="250" cy="370" r="8" fill="hsl(var(--secondary))" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
-                <circle cx="130" cy="250" r="8" fill="hsl(var(--primary))" className="animate-pulse" style={{ animationDelay: '0.9s' }} />
-              </g>
+                {/* Digital Solutions Image */}
+                <div className="absolute z-20 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-float">
+                  <div className="relative group">
+                    <div className="w-52 h-52 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-accent/20 transition-all duration-500 group-hover:scale-105 group-hover:border-accent/40 group-hover:shadow-accent/30">
+                      <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                        alt="Digital Solutions"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    
+                    {/* Tag */}
+                    <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 z-40">
+                      <div className="bg-gradient-to-r from-accent to-accent/80 text-white px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-2 group-hover:scale-110 transition-transform duration-300">
+                        <Globe className="w-3 h-3" />
+                        Digital Solutions
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {/* Connection Lines */}
-              <g opacity="0.3">
-                <line x1="250" y1="130" x2="250" y2="170" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" />
-                <line x1="370" y1="250" x2="330" y2="250" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
-                <line x1="250" y1="370" x2="250" y2="330" stroke="hsl(var(--secondary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
-                <line x1="130" y1="250" x2="170" y2="250" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.9s' }} />
-              </g>
+                {/* EVV Software Image */}
+                <div className="absolute z-10 -right-5 top-1/5 transform -translate-y-1/2 animate-float-delayed-2">
+                  <div className="relative group">
+                    <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl shadow-secondary/20 transition-all duration-500 group-hover:scale-105 group-hover:border-secondary/40 group-hover:shadow-secondary/30">
+                      <img 
+                        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                        alt="EVV Software"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    
+                    {/* Tag */}
+                    <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-40">
+                      <div className="bg-gradient-to-r from-secondary to-secondary/80 text-gray-500 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap shadow-lg border border-white/20 backdrop-blur-sm flex items-center gap-2 group-hover:scale-110 transition-transform duration-300">
+                        <Shield className="w-3 h-3" />
+                        EVV Software
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {/* Circuit Pattern */}
-              <g opacity="0.2">
-                <path d="M 100 100 L 150 100 L 150 150" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" />
-                <path d="M 400 100 L 350 100 L 350 150" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.2s' }} />
-                <path d="M 100 400 L 150 400 L 150 350" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.4s' }} />
-                <path d="M 400 400 L 350 400 L 350 350" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.6s' }} />
-              </g>
+                {/* Connecting Lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                  <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" />
+                      <stop offset="50%" stopColor="hsl(var(--accent))" />
+                      <stop offset="100%" stopColor="hsl(var(--secondary))" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M 120 240 Q 200 200 280 160"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="8,8"
+                    className="animate-pulse"
+                  />
+                  <path
+                    d="M 120 240 Q 240 240 360 240"
+                    stroke="url(#lineGradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeDasharray="8,8"
+                    className="animate-pulse"
+                    style={{ animationDelay: '0.3s' }}
+                  />
+                </svg>
+              </div>
 
-              {/* Floating Particles */}
-              {[...Array(12)].map((_, i) => (
-                <circle
-                  key={i}
-                  cx={150 + Math.cos(i * 30 * Math.PI / 180) * 180}
-                  cy={150 + Math.sin(i * 30 * Math.PI / 180) * 180}
-                  r="2"
-                  fill="hsl(var(--primary))"
-                  opacity="0.6"
-                  className="animate-pulse"
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                />
-              ))}
-
-              {/* Gradients */}
-              <defs>
-                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
-                </linearGradient>
-                <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0.3" />
-                </linearGradient>
-                <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Floating Tech Icons */}
-            <div className="absolute top-8 right-8 w-16 h-16 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20 animate-float">
-              <Shield className="w-8 h-8 text-primary" />
-            </div>
-            
-            <div className="absolute bottom-12 left-8 w-16 h-16 rounded-2xl bg-accent/10 backdrop-blur-sm flex items-center justify-center border border-accent/20 animate-float" style={{ animationDelay: '1s' }}>
-              <Lock className="w-8 h-8 text-accent" />
-            </div>
-            
-            <div className="absolute top-1/2 -right-4 w-16 h-16 rounded-2xl bg-secondary/10 backdrop-blur-sm flex items-center justify-center border border-secondary/20 animate-float" style={{ animationDelay: '2s' }}>
-              <CheckCircle2 className="w-8 h-8 text-secondary" />
+              {/* Floating Tech Icons */}
+              <div className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20 animate-float">
+                <Shield className="w-8 h-8 text-primary" />
+              </div>
+              
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-accent/10 backdrop-blur-sm flex items-center justify-center border border-accent/20 animate-float" style={{ animationDelay: '1s' }}>
+                <Lock className="w-8 h-8 text-accent" />
+              </div>
+              
+              <div className="absolute top-1/2 -right-8 w-16 h-16 rounded-2xl bg-secondary/10 backdrop-blur-sm flex items-center justify-center border border-secondary/20 animate-float" style={{ animationDelay: '2s' }}>
+                <CheckCircle2 className="w-8 h-8 text-secondary" />
+              </div>
             </div>
           </div>
         </div>

@@ -43,11 +43,13 @@ const AboutPage = () => {
               About <span className="gradient-text animate-gradient-shift">BrightPath</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-delayed">
-              Transforming businesses through innovative technology and creative digital solutions since 2022.
+              Transforming businesses through innovative technology and creative digital solutions since 2024.
             </p>
           </div>
         </section>
 
+        {/* Main About Content */}
+        <About />
         {/* Stats Section */}
         <section className="py-16 px-6 relative">
           <div className="max-w-7xl mx-auto">
@@ -71,9 +73,6 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
-
-        {/* Main About Content */}
-        <About />
 
         {/* Achievements Section */}
         <section className="py-24 px-6 relative">

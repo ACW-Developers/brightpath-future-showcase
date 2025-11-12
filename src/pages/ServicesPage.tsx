@@ -54,44 +54,6 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main className="pt-16">
-        {/* Hero Section */}
-        <section className="py-20 px-6 relative overflow-hidden hero-bg">
-          <div className="absolute top-20 right-10 w-64 h-64 bg-secondary/10 rounded-full blur-[120px] animate-pulse-glow" />
-          <div className="absolute bottom-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "1s" }} />
-          
-          <div className="max-w-7xl mx-auto text-center relative z-10">
-            <h1 className="text-5xl md:text-7xl font-bold font-space mb-6 animate-fade-in-up">
-              Our <span className="gradient-text animate-gradient-shift">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-delayed">
-              Comprehensive digital solutions to transform your business and drive growth in the modern marketplace.
-            </p>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-16 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-                return (
-                  <div
-                    key={benefit.title}
-                    className="glass-card p-6 text-center group hover:scale-105 transition-all duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
-                      <Icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <h3 className="text-lg font-bold font-space mb-2">{benefit.title}</h3>
-                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* Main Services Section */}
         <Services />
@@ -131,6 +93,29 @@ const ServicesPage = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+        {/* Benefits Section */}
+        <section className="py-16 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <div
+                    key={benefit.title}
+                    className="glass-card p-6 text-center group hover:scale-105 transition-all duration-300"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold font-space mb-2">{benefit.title}</h3>
+                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
