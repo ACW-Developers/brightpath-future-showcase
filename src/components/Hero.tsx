@@ -80,16 +80,17 @@ const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-in-up">
               <Button
-                size="lg"
-                variant="glass"
-                className="group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
-                onClick={() =>
-                  document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
-              </Button>
+              size="lg"
+              variant="glass"
+              className="hidden md:flex group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
+              onClick={() =>
+                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Get Started
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
+            </Button>
+
 
               <Button
                 size="lg"
@@ -99,7 +100,7 @@ const Hero = () => {
                   document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                View Our Work
+                Our Services
               </Button>
             </div>
           </div>
