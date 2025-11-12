@@ -1,27 +1,22 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo/logo.png"; // <-- import your logo here
+import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#team" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Projects", href: "/projects" },
+    { name: "Team", href: "/team" },
   ];
 
-  const scrollToId = (id) => {
-    setIsOpen(false);
-    const el = document.getElementById(id);
-    if (!el) return;
-    requestAnimationFrame(() => {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  };
+  const isActive = (href: string) => location.pathname === href;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
@@ -39,13 +34,17 @@ const Navigation = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors"
+                  to={item.href}
+                  className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    isActive(item.href)
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -54,11 +53,16 @@ const Navigation = () => {
           <div className="hidden md:block">
             <a
               href="#contact"
-              onClick={() =>
-                document.getElementById("contact")?.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                } else {
+                  window.location.href = "/#contact";
+                }
+              }}
             >
               <Button variant="glass">Contact Us</Button>
             </a>
@@ -82,21 +86,34 @@ const Navigation = () => {
           <div className="md:hidden border-t border-white/10">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-primary block px-3 py-2 text-base font-medium transition-colors"
+                  to={item.href}
+                  className={`block px-3 py-2 text-base font-medium transition-colors ${
+                    isActive(item.href)
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
 
               <div className="px-3 py-2">
                 <Button
                   variant="glass"
                   className="w-full"
-                  onClick={() => scrollToId("contact")}
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (location.pathname === "/") {
+                      document.getElementById("contact")?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                    } else {
+                      window.location.href = "/#contact";
+                    }
+                  }}
                 >
                   Get Started
                 </Button>
