@@ -1,13 +1,11 @@
-import { ArrowRight, Sparkles, Play, Zap, Globe } from "lucide-react";
+import { ArrowRight, Sparkles, Zap, Globe, Shield, Lock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-bg.jpg";
-import { useState, useEffect, useRef } from "react";
-import heroBg from "@/assets/team/Irihose.png";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const [typedText, setTypedText] = useState("");
   const fullText = "Transforming Ideas into Digital Success";
-  const imageRef = useRef(null);
   
   useEffect(() => {
     let index = 0;
@@ -20,26 +18,7 @@ const Hero = () => {
       }
     }, 100);
     
-    // Intersection Observer for image animation
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-float-in");
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
-    
-    return () => {
-      clearInterval(timer);
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
-    };
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -128,50 +107,120 @@ const Hero = () => {
           </div>
           </div>
           
-          {/* Futuristic Image Section */}
-          <div 
-            ref={imageRef}
-            className="relative w-full lg:w-1/2 flex justify-center items-center opacity-0 translate-x-20"
-          >
-            {/* Main Image Container */}
-            <div className="relative w-80 h-900 md:w-96 md:h-96 rounded-2xl overflow-hidden transform perspective-1000 rotate-y-10 group hover:rotate-y-0 transition-all duration-700">
-              {/* Using a high-quality futuristic image from Unsplash */}
-              <div 
-                className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{
-                  backgroundImage: `url(${heroBg})`,
-                }}
-              />
-              
-              {/* Animated Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/2 to-purple-500/10 animate-pulse-slow group-hover:opacity-30 transition-opacity duration-500" />
-              
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-blue-500/30 blur-xl animate-float-1 group-hover:scale-125 transition-transform duration-700" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-purple-500/30 blur-xl animate-float-2 group-hover:scale-125 transition-transform duration-700" />
-              
-              {/* Holographic Grid Overlay */}
-              <div className="absolute inset-0 opacity-20 bg-grid-pattern animate-grid-move" />
+          {/* Animated Tech SVG Section */}
+          <div className="relative w-full lg:w-1/2 flex justify-center items-center animate-fade-in">
+            <svg
+              className="w-full h-auto max-w-lg"
+              viewBox="0 0 500 500"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Central Shield */}
+              <g className="animate-pulse-glow">
+                <circle
+                  cx="250"
+                  cy="250"
+                  r="120"
+                  fill="none"
+                  stroke="url(#gradient1)"
+                  strokeWidth="2"
+                  className="animate-spin-slow"
+                  style={{ transformOrigin: 'center' }}
+                />
+                <circle
+                  cx="250"
+                  cy="250"
+                  r="100"
+                  fill="none"
+                  stroke="url(#gradient2)"
+                  strokeWidth="1.5"
+                  className="animate-spin-slow"
+                  style={{ transformOrigin: 'center', animationDirection: 'reverse' }}
+                />
+                
+                {/* Shield Icon */}
+                <path
+                  d="M 250 200 L 220 220 L 220 270 Q 220 290 250 300 Q 280 290 280 270 L 280 220 Z"
+                  fill="url(#gradient3)"
+                  className="animate-float"
+                />
+                
+                {/* Checkmark */}
+                <path
+                  d="M 235 255 L 245 265 L 265 240"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  fill="none"
+                  className="animate-fade-in-delayed"
+                />
+              </g>
 
+              {/* Orbiting Data Nodes */}
+              <g className="animate-orbit-1" style={{ transformOrigin: '250px 250px' }}>
+                <circle cx="250" cy="130" r="8" fill="hsl(var(--primary))" className="animate-pulse" />
+                <circle cx="370" cy="250" r="8" fill="hsl(var(--accent))" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+                <circle cx="250" cy="370" r="8" fill="hsl(var(--secondary))" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
+                <circle cx="130" cy="250" r="8" fill="hsl(var(--primary))" className="animate-pulse" style={{ animationDelay: '0.9s' }} />
+              </g>
+
+              {/* Connection Lines */}
+              <g opacity="0.3">
+                <line x1="250" y1="130" x2="250" y2="170" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" />
+                <line x1="370" y1="250" x2="330" y2="250" stroke="hsl(var(--accent))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.3s' }} />
+                <line x1="250" y1="370" x2="250" y2="330" stroke="hsl(var(--secondary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.6s' }} />
+                <line x1="130" y1="250" x2="170" y2="250" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: '0.9s' }} />
+              </g>
+
+              {/* Circuit Pattern */}
+              <g opacity="0.2">
+                <path d="M 100 100 L 150 100 L 150 150" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" />
+                <path d="M 400 100 L 350 100 L 350 150" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.2s' }} />
+                <path d="M 100 400 L 150 400 L 150 350" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.4s' }} />
+                <path d="M 400 400 L 350 400 L 350 350" stroke="hsl(var(--primary))" strokeWidth="1" fill="none" className="animate-fade-in" style={{ animationDelay: '0.6s' }} />
+              </g>
+
+              {/* Floating Particles */}
+              {[...Array(12)].map((_, i) => (
+                <circle
+                  key={i}
+                  cx={150 + Math.cos(i * 30 * Math.PI / 180) * 180}
+                  cy={150 + Math.sin(i * 30 * Math.PI / 180) * 180}
+                  r="2"
+                  fill="hsl(var(--primary))"
+                  opacity="0.6"
+                  className="animate-pulse"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                />
+              ))}
+
+              {/* Gradients */}
+              <defs>
+                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
+                </linearGradient>
+                <linearGradient id="gradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0.3" />
+                </linearGradient>
+                <linearGradient id="gradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            {/* Floating Tech Icons */}
+            <div className="absolute top-8 right-8 w-16 h-16 rounded-2xl bg-primary/10 backdrop-blur-sm flex items-center justify-center border border-primary/20 animate-float">
+              <Shield className="w-8 h-8 text-primary" />
             </div>
             
-            {/* Floating Tech Elements */}
-            <div className="absolute -top-8 -right-4 w-14 h-14 rounded-full bg-blue-500/20 backdrop-blur-sm flex items-center justify-center border border-blue-500/30 animate-float-3 group-hover:-translate-y-2 transition-transform duration-700">
-              <Zap className="w-6 h-6 text-blue-400 group-hover:animate-spin duration-1000" />
+            <div className="absolute bottom-12 left-8 w-16 h-16 rounded-2xl bg-accent/10 backdrop-blur-sm flex items-center justify-center border border-accent/20 animate-float" style={{ animationDelay: '1s' }}>
+              <Lock className="w-8 h-8 text-accent" />
             </div>
             
-            <div className="absolute -bottom-6 left-0 w-12 h-12 rounded-full bg-purple-500/20 backdrop-blur-sm flex items-center justify-center border border-purple-500/30 animate-float-4 group-hover:translate-y-2 transition-transform duration-700">
-              <Globe className="w-5 h-5 text-purple-400 group-hover:rotate-180 transition-transform duration-1000" />
-            </div>
-            
-            {/* Connection Lines */}
-            <div className="absolute top-1/2 -left-10 w-20 h-0.5 bg-gradient-to-r from-transparent to-blue-500/50 group-hover:w-24 transition-all duration-700" />
-            <div className="absolute bottom-1/4 -right-10 w-20 h-0.5 bg-gradient-to-l from-transparent to-purple-500/50 group-hover:w-24 transition-all duration-700" />
-            
-            {/* Animated Orbital Rings */}
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-blue-400/20 rounded-full animate-orbit-1"></div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-purple-400/20 rounded-full animate-orbit-2"></div>
+            <div className="absolute top-1/2 -right-4 w-16 h-16 rounded-2xl bg-secondary/10 backdrop-blur-sm flex items-center justify-center border border-secondary/20 animate-float" style={{ animationDelay: '2s' }}>
+              <CheckCircle2 className="w-8 h-8 text-secondary" />
             </div>
           </div>
         </div>
