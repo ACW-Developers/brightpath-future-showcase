@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles, Zap, Globe, Shield, Lock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-bg.jpg";
 // Import local images
 import printingBrandingImage from "@/assets/projects/print.jpg";
@@ -83,29 +84,26 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start animate-slide-in-up">
-              <Button
-              size="lg"
-              variant="glass"
-              className="hidden md:flex group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
-              onClick={() =>
-                document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Get Started
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
-            </Button>
+              <Link to="/services">
+                <Button
+                  size="lg"
+                  variant="glass"
+                  className="hidden md:flex group text-lg px-6 py-3 animate-bounce-subtle hover:animate-glow-pulse"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-all duration-300" />
+                </Button>
+              </Link>
 
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-6 py-3 border-primary/50 hover:border-primary hover:shadow-glow transition-all duration-300"
-                onClick={() =>
-                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                Our Services
-              </Button>
+              <Link to="/services">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-lg px-6 py-3 border-primary/50 hover:border-primary hover:shadow-glow transition-all duration-300"
+                >
+                  Our Services
+                </Button>
+              </Link>
             </div>
           </div>
           
