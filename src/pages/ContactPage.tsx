@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, Send, MessageSquare, User, Clock, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, User, Clock, Globe, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,28 +9,32 @@ import { useToast } from "@/hooks/use-toast";
 
 const contactMethods = [
   {
+    icon: MessageCircle,
+    title: "WhatsApp Us",
+    detail: "+1 (520) 736-1677",
+    description: "Fastest way to reach us",
+    action: "whatsapp"
+  },
+  {
     icon: Mail,
     title: "Email Us",
     detail: "davidirihose94@gmail.com",
-    description: "Send us an email anytime"
+    description: "Send us an email anytime",
+    action: "email"
   },
   {
     icon: Phone,
     title: "Call Us",
     detail: "+1 (520) 736-1677",
-    description: "Mon-Fri from 8am to 6pm"
+    description: "Mon-Fri from 8am to 6pm",
+    action: "phone"
   },
   {
     icon: MapPin,
     title: "Visit Us",
     detail: "Phoenix, Arizona",
-    description: "Come say hello"
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    detail: "Mon-Fri: 8am - 6pm",
-    description: "We're here to help"
+    description: "Come say hello",
+    action: "location"
   }
 ];
 
@@ -44,13 +48,41 @@ const ContactPage = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Phone:* ${formData.phone}%0A*Subject:* ${formData.subject}%0A%0A*Message:*%0A${formData.message}`;
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/15207361677?text=${whatsappMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you as soon as possible.",
+      title: "Opening WhatsApp!",
+      description: "You'll be redirected to WhatsApp to send your message.",
     });
+    
+    // Reset form
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+  };
+
+  const handleContactMethodClick = (method: typeof contactMethods[0]) => {
+    switch (method.action) {
+      case 'whatsapp':
+        window.open(`https://wa.me/15207361677`, '_blank');
+        break;
+      case 'email':
+        window.location.href = `mailto:davidirihose94@gmail.com`;
+        break;
+      case 'phone':
+        window.location.href = `tel:+15207361677`;
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -81,14 +113,25 @@ const ContactPage = () => {
                 return (
                   <div
                     key={method.title}
-                    className="glass-card p-6 text-center group hover:scale-105 transition-all duration-300"
+                    className="glass-card p-6 text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
                     style={{ animationDelay: `${index * 0.1}s` }}
+                    onClick={() => handleContactMethodClick(method)}
                   >
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow">
-                      <Icon className="w-8 h-8 text-primary" />
+                    <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse-glow ${
+                      method.action === 'whatsapp' 
+                        ? 'bg-green-500/20' 
+                        : 'bg-gradient-to-br from-primary/30 to-secondary/20'
+                    }`}>
+                      <Icon className={`w-8 h-8 ${
+                        method.action === 'whatsapp' ? 'text-green-500' : 'text-primary'
+                      }`} />
                     </div>
                     <h3 className="text-lg font-bold font-space mb-2">{method.title}</h3>
-                    <p className="text-primary text-sm font-medium mb-1">{method.detail}</p>
+                    <p className={`text-sm font-medium mb-1 ${
+                      method.action === 'whatsapp' ? 'text-green-500' : 'text-primary'
+                    }`}>
+                      {method.detail}
+                    </p>
                     <p className="text-xs text-muted-foreground">{method.description}</p>
                   </div>
                 );
@@ -114,6 +157,18 @@ const ContactPage = () => {
 
                 <div className="glass-card p-8 space-y-6">
                   <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <MessageCircle className="w-6 h-6 text-green-500" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold font-space mb-2">Instant WhatsApp</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Get immediate responses via WhatsApp. We're just a message away!
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
                       <MessageSquare className="w-6 h-6 text-primary" />
                     </div>
@@ -136,24 +191,42 @@ const ContactPage = () => {
                       </p>
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <User className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold font-space mb-2">Personalized Service</h3>
-                      <p className="text-muted-foreground text-sm">
-                        Every project is unique, and we tailor our approach to meet your specific requirements.
-                      </p>
-                    </div>
+                {/* Direct WhatsApp Button */}
+                <div className="glass-card p-6 border-2 border-green-500/20">
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold font-space mb-3 text-green-500">
+                      Prefer Direct Chat?
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      Click below to start a conversation on WhatsApp instantly
+                    </p>
+                    <Button
+                      onClick={() => window.open('https://wa.me/15207361677', '_blank')}
+                      className="bg-green-600 hover:bg-green-700 text-white w-full group"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Chat on WhatsApp
+                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Form */}
               <div className="glass-card p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="flex items-center mb-6 p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+                  <MessageCircle className="w-6 h-6 text-green-500 mr-3" />
+                  <div>
+                    <h3 className="font-semibold text-green-500">WhatsApp Submission</h3>
+                    <p className="text-sm text-muted-foreground">
+                      This form will open WhatsApp with your message pre-filled
+                    </p>
+                  </div>
+                </div>
+
+                <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-foreground">Your Name *</label>
@@ -218,10 +291,10 @@ const ContactPage = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    variant="glass"
-                    className="w-full group"
+                    className="w-full group bg-green-600 hover:bg-green-700"
                   >
-                    Send Message
+                    <MessageCircle className="mr-2 w-5 h-5" />
+                    Send via WhatsApp
                     <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>

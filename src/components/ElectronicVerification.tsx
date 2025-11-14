@@ -6,6 +6,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+// Import local images
+import evvSoftwareImage from "@/assets/projects/Screenshot (510).png";
+import digitalSolutionsImage from "@/assets/projects/healthcare-system.jpg";
+import printingBrandingImage from "@/assets/projects/print.jpg";
 
 const ServicesOverview = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -18,7 +22,7 @@ const ServicesOverview = () => {
       category: "evv",
       color: "primary",
       features: ["Biometric Verification", "Real-time GPS Tracking", "Compliance Reporting", "Mobile Applications"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: evvSoftwareImage,
       tag: "Secure & Compliant"
     },
     {
@@ -28,7 +32,7 @@ const ServicesOverview = () => {
       category: "digital",
       color: "accent",
       features: ["Web Development", "Mobile Applications", "Custom Software", "Cloud Solutions"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: digitalSolutionsImage,
       tag: "Innovative Tech"
     },
     {
@@ -38,7 +42,7 @@ const ServicesOverview = () => {
       category: "printing",
       color: "secondary",
       features: ["Brand Identity", "Large Format Printing", "Promotional Products", "Vehicle Branding"],
-      image: "https://images.unsplash.com/photo-1601935111741-ae98b2b230b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: printingBrandingImage,
       tag: "Visual Impact"
     }
   ];
