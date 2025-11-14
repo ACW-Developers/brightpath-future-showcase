@@ -120,23 +120,35 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA Section with Image */}
         <section className="py-24 px-6 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="glass-card p-12 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-bold font-space mb-6 animate-text-glow">
-                  Ready to Start Your <span className="gradient-text">Project?</span>
-                </h2>
-                <p className="text-xl text-muted-foreground mb-8">
-                  Let's discuss how we can help transform your business with innovative digital solutions.
-                </p>
-                <a href="#contact">
-                  <button className="glass-button px-8 py-4 text-lg font-semibold hover:scale-105 transition-all duration-300">
-                    Get Started Today
-                  </button>
-                </a>
+          <div className="max-w-7xl mx-auto">
+            <div className="glass-card overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-0">
+                <div className="relative h-96 lg:h-auto">
+                  <img 
+                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1770&q=80"
+                    alt="Team collaboration"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
+                </div>
+                <div className="p-12 flex flex-col justify-center relative">
+                  <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
+                  <div className="relative z-10">
+                    <h2 className="text-3xl md:text-5xl font-bold font-space mb-6 animate-text-glow">
+                      Ready to Start Your <span className="gradient-text">Project?</span>
+                    </h2>
+                    <p className="text-xl text-muted-foreground mb-8">
+                      Let's discuss how we can help transform your business with innovative digital solutions.
+                    </p>
+                    <a href="/contact">
+                      <button className="glass-button px-8 py-4 text-lg font-semibold hover:scale-105 transition-all duration-300">
+                        Get Started Today
+                      </button>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

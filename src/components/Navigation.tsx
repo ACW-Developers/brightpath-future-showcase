@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
@@ -14,9 +14,15 @@ const Navigation = () => {
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
     { name: "Team", href: "/team" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
@@ -49,23 +55,11 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Contact Button (Desktop) */}
+          {/* CTA Button (Desktop) */}
           <div className="hidden md:block">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                if (location.pathname === "/") {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                } else {
-                  window.location.href = "/#contact";
-                }
-              }}
-            >
-              <Button variant="glass">Contact Us</Button>
-            </a>
+            <Link to="/contact">
+              <Button variant="glass">Get Started</Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -101,22 +95,11 @@ const Navigation = () => {
               ))}
 
               <div className="px-3 py-2">
-                <Button
-                  variant="glass"
-                  className="w-full"
-                  onClick={() => {
-                    setIsOpen(false);
-                    if (location.pathname === "/") {
-                      document.getElementById("contact")?.scrollIntoView({
-                        behavior: "smooth",
-                      });
-                    } else {
-                      window.location.href = "/#contact";
-                    }
-                  }}
-                >
-                  Get Started
-                </Button>
+                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  <Button variant="glass" className="w-full">
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
