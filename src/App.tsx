@@ -7,12 +7,15 @@ import { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
+import PrintingBrandingPage from "./pages/PrintingBrandingPage";
+import DigitalSolutionsPage from "./pages/DigitalSolutionsPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import TeamPage from "./pages/TeamPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 
 const queryClient = new QueryClient();
 
@@ -20,7 +23,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time for assets
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -43,12 +45,14 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/printing-branding" element={<PrintingBrandingPage />} />
+            <Route path="/services/digital-solutions" element={<DigitalSolutionsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <WhatsAppWidget />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

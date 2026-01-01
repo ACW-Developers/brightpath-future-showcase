@@ -1,4 +1,6 @@
-import { Star, Quote, User } from "lucide-react";
+import { Star, Quote, User, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const testimonials = [
   {
@@ -46,8 +48,47 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    slidesToScroll: 1,
+  });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
+  // Auto-scroll
+  useEffect(() => {
+    if (!emblaApi) return;
+    const autoplayInterval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 5000);
+    return () => clearInterval(autoplayInterval);
+  }, [emblaApi]);
+
   return (
-    <section className="py-24 px-6 relative">
+    <section className="py-24 px-6 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
+
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold font-space mb-6">
@@ -58,43 +99,81 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.name}
-              className="glass-card p-6 text-center relative"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="absolute top-4 right-4 text-primary/20">
-                <Quote className="w-8 h-8" />
-              </div>
+        {/* Carousel */}
+        <div className="relative">
+          {/* Navigation buttons */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 glass-card flex items-center justify-center hover:bg-primary/20 transition-colors disabled:opacity-50"
+            disabled={!canScrollPrev}
+          >
+            <ChevronLeft className="w-6 h-6 text-primary" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 glass-card flex items-center justify-center hover:bg-primary/20 transition-colors disabled:opacity-50"
+            disabled={!canScrollNext}
+          >
+            <ChevronRight className="w-6 h-6 text-primary" />
+          </button>
 
-              <div className="mb-6">
-                <div className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-primary/20 flex items-center justify-center bg-primary/10">
-                  <User className="w-8 h-8 text-primary" />
+          <div className="overflow-hidden mx-8" ref={emblaRef}>
+            <div className="flex gap-6">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={testimonial.name}
+                  className="flex-none w-full sm:w-1/2 lg:w-1/3"
+                >
+                  <div className="glass-card p-6 h-full relative group hover:scale-[1.02] transition-all duration-300">
+                    <div className="absolute top-4 right-4 text-primary/20 group-hover:text-primary/40 transition-colors">
+                      <Quote className="w-8 h-8" />
+                    </div>
+
+                    <div className="mb-6">
+                      <div className="w-16 h-16 rounded-full mx-auto mb-4 border-2 border-primary/20 flex items-center justify-center bg-primary/10 group-hover:border-primary/40 transition-colors">
+                        <User className="w-8 h-8 text-primary" />
+                      </div>
+                      
+                      <div className="flex justify-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-primary fill-current" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 italic line-clamp-4">
+                      "{testimonial.text}"
+                    </p>
+
+                    <div className="text-center mt-auto">
+                      <p className="font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-primary text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="flex justify-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-primary fill-current" />
-                  ))}
-                </div>
-              </div>
-
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6 italic">
-                "{testimonial.text}"
-              </p>
-
-              <div>
-                <p className="text-primary text-sm font-medium">{testimonial.role}</p>
-                <p className="text-muted-foreground text-xs">{testimonial.company}</p>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  selectedIndex === index
+                    ? "w-8 bg-primary"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
+        {/* Stats */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-8 glass-card px-8 py-4">
+          <div className="inline-flex items-center flex-wrap justify-center gap-8 glass-card px-8 py-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary">5+</div>
               <div className="text-sm text-muted-foreground">Clients</div>

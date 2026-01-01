@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ElectronicVerification from "@/components/ElectronicVerification";
 import TechShowcase from "@/components/TechShowcase";
 import Testimonials from "@/components/Testimonials";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
         <ElectronicVerification />
         <TechShowcase />
         <Testimonials />
+        <CTASection />
       </main>
       <Footer />
     </div>
